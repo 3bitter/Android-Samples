@@ -1,0 +1,1 @@
+include ':foreground_monitoring', ':threebittersdk-release', ':background_monitoring'

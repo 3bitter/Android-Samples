@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.threebitter.beacons.tbbltsample">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ContentListActivity"
+            android:label="@string/title_activity_content_list"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ContentActivity"
+            android:label="@string/title_activity_content"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+
+        <meta-data
+            android:name="com.threebitter.DeveloperAppCode"
+            android:value="TbBTGenericTestCode" />
+
+        <meta-data
+            android:name="com.threebitter.TestMode"
+            android:value="true" />
+
+        <meta-data
+            android:name="com.threebitter.MaxCount"
+            android:value="20" />
+
+        <service
+            android:name="com.threebitter.sdk.service.BeaconService"
+            android:enabled="true"
+            android:exported="false"
+            android:isolatedProcess="false" />
+
+        <service
+            android:name="com.threebitter.sdk.service.BeaconProcessor"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+
+</manifest>

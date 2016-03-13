@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/ueda/Documents/MyProject/Android-samples/External/SlidingTabsBasic/Application/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="/Users/ueda/Documents/MyProject/Android-samples/External/SlidingTabsBasic/Application/build/intermediates/pre-dexed/debug/classes-7fe3ddf10f7c8fc67fe498b98945deb638dc0cb4.jar" />
+    </item>
+    <item
+        jar="/Users/ueda/Documents/MyProject/Android-samples/External/SlidingTabsBasic/Application/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="/Users/ueda/Documents/MyProject/Android-samples/External/SlidingTabsBasic/Application/build/intermediates/pre-dexed/debug/internal_impl-23.0.0-6523675b94e082d966402ca27925bf7d91fc929f.jar" />
+    </item>
+    <item
+        jar="/Users/ueda/Documents/MyProject/Android-samples/External/SlidingTabsBasic/Application/build/intermediates/exploded-aar/com.android.support/support-v13/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="bb0ac3f3ee2d71854501cc28e52cc84a20209b41">
+        <dex dex="/Users/ueda/Documents/MyProject/Android-samples/External/SlidingTabsBasic/Application/build/intermediates/pre-dexed/debug/classes-fc0f06cf84ea16092345aaf1288811586548fded.jar" />
+    </item>
+    <item
+        jar="/Users/ueda/Documents/MyProject/Android-samples/External/SlidingTabsBasic/Application/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="1ccbc26be2c465c622a48310e8092241b01abe80">
+        <dex dex="/Users/ueda/Documents/MyProject/Android-samples/External/SlidingTabsBasic/Application/build/intermediates/pre-dexed/debug/classes-ff1be18bd621168556883170e405ee79e9cd1c53.jar" />
+    </item>
+    <item
+        jar="/Users/ueda/android-sdks/extras/android/m2repository/com/android/support/support-annotations/23.0.0/support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="/Users/ueda/Documents/MyProject/Android-samples/External/SlidingTabsBasic/Application/build/intermediates/pre-dexed/debug/support-annotations-23.0.0-7a26fd53762038c6987f4cb9fa3379a147a4fe9a.jar" />
+    </item>
+    <item
+        jar="/Users/ueda/Documents/MyProject/Android-samples/External/SlidingTabsBasic/Application/build/intermediates/exploded-aar/com.android.support/support-v13/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="5d4bccb885c8a89d066ecb6c4addb553a99a79a2">
+        <dex dex="/Users/ueda/Documents/MyProject/Android-samples/External/SlidingTabsBasic/Application/build/intermediates/pre-dexed/debug/internal_impl-23.0.0-bceb78f51ea817d53492d0770aace39545eb4c8a.jar" />
+    </item>
+
+</items>

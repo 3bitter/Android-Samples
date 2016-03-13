@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Android-Samples.iml" filepath="$PROJECT_DIR$/Android-Samples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/background_monitoring/background_monitoring.iml" filepath="$PROJECT_DIR$/background_monitoring/background_monitoring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/foreground_monitoring/foreground_monitoring.iml" filepath="$PROJECT_DIR$/foreground_monitoring/foreground_monitoring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/threebittersdk-release/threebittersdk-release.iml" filepath="$PROJECT_DIR$/threebittersdk-release/threebittersdk-release.iml" />
+    </modules>
+  </component>
+</project>

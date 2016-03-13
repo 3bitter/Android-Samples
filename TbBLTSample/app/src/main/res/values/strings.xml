@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TbBLTSample</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_content_list">コンテンツリスト</string>
+    <string name="title_activity_content">コンテンツ</string>
+    <string name="action_disableBLT">ビーコン連動停止</string>
+</resources>
