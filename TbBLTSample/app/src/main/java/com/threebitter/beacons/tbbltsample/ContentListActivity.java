@@ -34,13 +34,12 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
 
     private IBeaconManager mBeaconManager;
 
- //   private final int MAX_RANGE_COUNT = 3;
     private final long TIMEOUT_INTERVAL = 15000;
 
     private ProgressDialog mProgressIndicator;
     private Timer mTimeoutTimer;
 
-   // private Date rangeStartTime; // Just for debug
+    // private Date rangeStartTime; // Just for debug
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +121,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
                     // Cancel stop timer and stop ranging
                     mTimeoutTimer.cancel();
                     mTimeoutTimer = null;
-                   /* Date current = new Date(System.currentTimeMillis());
+                  /*  Date current = new Date(System.currentTimeMillis());
                     long elapsed = current.getTime() - rangeStartTime.getTime();
                     Toast.makeText(ContentListActivity.this, "ビーコン領域限定コンテンツをチェックしました Elapsed: " + elapsed / 1000 + " sec.", Toast.LENGTH_LONG).show();
                     */
@@ -189,7 +188,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
             };
             // Repeat every sec.
             mTimeoutTimer.schedule(stopRangingTask, 0, 1000);
-            //rangeStartTime = new Date(System.currentTimeMillis());
+         //   rangeStartTime = new Date(System.currentTimeMillis());
 
             mBeaconManager.startRangingInitialRegions();
             // Return back to main thread
