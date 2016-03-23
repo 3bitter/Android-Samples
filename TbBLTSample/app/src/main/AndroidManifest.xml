@@ -43,6 +43,10 @@
             android:name="com.threebitter.MaxCount"
             android:value="20" />
 
+        <meta-data
+            android:name="com.threebitter.RangingMode"
+            android:value="high"/>
+
         <service
             android:name="com.threebitter.sdk.service.BeaconService"
             android:enabled="true"

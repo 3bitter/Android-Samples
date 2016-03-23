@@ -10,7 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/threebittersdk-blt.1.0.0" />
+            <option value="$PROJECT_DIR$/threebittersdk-blt.1.1.0" />
           </set>
         </option>
       </GradleProjectSettings>
