@@ -5,13 +5,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.threebitter.beacons.tbbltsample.dummy.BRSpecificContnents;
 import com.threebitter.sdk.BeaconConsumer;
@@ -22,7 +20,6 @@ import com.threebitter.sdk.BeaconRegion;
 import com.threebitter.sdk.IBeaconManager;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -68,7 +65,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
         mBeaconManager = BeaconManager.getInstance(getApplicationContext());
         if (mBeaconManager != null) {
             mBeaconManager.bind(this);
-            mBeaconManager.setRangeNotifier(this);
+            mBeaconManager.addRangeNotifier(this);
         }
     }
 
@@ -85,9 +82,9 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
 
     protected void onDestroy() {
         if (mBeaconManager != null) {
-            mBeaconManager.stopRangingInitialRegions();
+            mBeaconManager.stopRangingTbBTInitialRegions();
             mBeaconManager.unbind(this);
-            mBeaconManager.setRangeNotifier(null);
+            mBeaconManager.addRangeNotifier(null);
         }
         super.onDestroy();
     }
@@ -125,7 +122,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
                     long elapsed = current.getTime() - rangeStartTime.getTime();
                     Toast.makeText(ContentListActivity.this, "ビーコン領域限定コンテンツをチェックしました Elapsed: " + elapsed / 1000 + " sec.", Toast.LENGTH_LONG).show();
                     */
-                    mBeaconManager.stopRangingInitialRegions();
+                    mBeaconManager.stopRangingTbBTInitialRegions();
                 }
             });
         }
@@ -178,7 +175,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
                                 }
                                 // Stop ranging and clear data
                                // Toast.makeText(ContentListActivity.this, "タイムアウトしました", Toast.LENGTH_LONG).show();
-                                mBeaconManager.stopRangingInitialRegions();
+                                mBeaconManager.stopRangingTbBTInitialRegions();
                                 mTimeoutTimer.cancel();
                                 mTimeoutTimer = null;
                             }
@@ -190,7 +187,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
             mTimeoutTimer.schedule(stopRangingTask, 0, 1000);
          //   rangeStartTime = new Date(System.currentTimeMillis());
 
-            mBeaconManager.startRangingInitialRegions();
+            mBeaconManager.startRangingTbBTInitialRegions();
             // Return back to main thread
             runOnUiThread(new Runnable() {
                 @Override

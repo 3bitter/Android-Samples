@@ -1,1 +1,1 @@
-include ':app', ':threebittersdk-blt.1.1.0'
+include ':app', ':threebittersdk-blt.1.1.0', ':SWAMP-SDK.1.3.0'
