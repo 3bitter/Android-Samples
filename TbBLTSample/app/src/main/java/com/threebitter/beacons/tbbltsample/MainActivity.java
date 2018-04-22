@@ -36,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
         showContentButton.setOnClickListener(new View.OnClickListener() {
                                                  @Override
                                                  public void onClick(View v) {
+                                                     // 端末やOSがビーコン機能をサポートしているかチェック
                                                      boolean beaconUsableWithThisDevice = BeaconServiceHelper.isSupportBeacon(getApplicationContext());
+                                                     // ビーコン機能を使用することにユーザーが同意したか否か
                                                      boolean usingBeacon = getSharedPreferences(PREF_FILE_KEY, MODE_PRIVATE).getBoolean("useBeacon", false);
                                                      if (beaconUsableWithThisDevice && !usingBeacon) {
                                                          showConfirmationDialog();
@@ -51,12 +53,10 @@ public class MainActivity extends AppCompatActivity {
         );
 
         if (!BeaconServiceHelper.isSupportBeacon(getApplicationContext())) {
-            /* Toast infoToast = Toast.makeText(this, "端末またはOSでビーコン使用がサポートされていません", Toast.LENGTH_LONG);
-            infoToast.show(); */
             Log.w("Debug", "Beacon Unsupported");
-            return; // Cannot use beacon related functionality
+            return;
         }
-        // Preparation for Beacon SDK (Just for foreground mode)
+        // ビーコン機能使用のための準備
         StartUp.init(getApplication());
     }
 
@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /* Bluetoothの設定状況と、位置情報サービス使用許可状態を確認 */
     private void checkBTAvailabilityAndDetermineAction() {
         if (!BeaconServiceHelper.isBluetoothEnabled()) { // Bluetooth is OFF on this device
             Log.i("Debug", "Bluetooth Disabled");

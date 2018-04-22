@@ -64,6 +64,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
         // Build beacon manager
         mBeaconManager = BeaconManager.getInstance(getApplicationContext());
         if (mBeaconManager != null) {
+            /* ビーコン電波受信機能の接続 */
             mBeaconManager.bind(this);
             mBeaconManager.addRangeNotifier(this);
         }
@@ -81,6 +82,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
     }
 
     protected void onDestroy() {
+        /* ビーコン機能の切り離し */
         if (mBeaconManager != null) {
             mBeaconManager.stopRangingTbBTInitialRegions();
             mBeaconManager.unbind(this);
@@ -89,6 +91,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
         super.onDestroy();
     }
 
+    /* ビーコン検出処理の正常系コールバック */
     @Override
     public void didRangeBeacons(@NonNull final List<BeaconData> beaconDataList, @NonNull final BeaconRegion region) {
         Log.d("callback", "didRangeBeacons");
@@ -116,12 +119,15 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
                     setListAdapter(myContentArrayAdapter);
 
                     // Cancel stop timer and stop ranging
-                    mTimeoutTimer.cancel();
-                    mTimeoutTimer = null;
+                    if(mTimeoutTimer != null) {
+                        mTimeoutTimer.cancel();
+                        mTimeoutTimer = null;
+                    }
                   /*  Date current = new Date(System.currentTimeMillis());
                     long elapsed = current.getTime() - rangeStartTime.getTime();
                     Toast.makeText(ContentListActivity.this, "ビーコン領域限定コンテンツをチェックしました Elapsed: " + elapsed / 1000 + " sec.", Toast.LENGTH_LONG).show();
                     */
+                    //　ビーコン検出処理の停止
                     mBeaconManager.stopRangingTbBTInitialRegions();
                 }
             });
@@ -154,11 +160,15 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
         return specialContentList;
     }
 
+    /*
+     * ビーコン電波受信機能に接続した場合に呼ばれるコールバック
+     */
     @Override
     public void onBeaconScannerConnect() {
         Log.d("callback", "onBeaconScannerConnect");
         if (mBeaconManager != null) {
             final long timeoutTime = System.currentTimeMillis() + TIMEOUT_INTERVAL;
+            // タイムアウトした場合にビーコン検出処理をストップするためのタイマー
             mTimeoutTimer = new Timer();
             TimerTask stopRangingTask = new TimerTask() {
                 @Override
@@ -173,7 +183,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
                                     mProgressIndicator.dismiss();
                                     mProgressIndicator = null;
                                 }
-                                // Stop ranging and clear data
+                                // ビーコンの検出を停止
                                // Toast.makeText(ContentListActivity.this, "タイムアウトしました", Toast.LENGTH_LONG).show();
                                 mBeaconManager.stopRangingTbBTInitialRegions();
                                 mTimeoutTimer.cancel();
@@ -187,6 +197,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
             mTimeoutTimer.schedule(stopRangingTask, 0, 1000);
          //   rangeStartTime = new Date(System.currentTimeMillis());
 
+            // ビーコン検出処理を開始します
             mBeaconManager.startRangingTbBTInitialRegions();
             // Return back to main thread
             runOnUiThread(new Runnable() {
