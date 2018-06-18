@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.threebitter.beacons.tbbltsample.dummy.BRSpecificContnents;
 import com.threebitter.sdk.BeaconConsumer;
@@ -20,6 +21,7 @@ import com.threebitter.sdk.BeaconRegion;
 import com.threebitter.sdk.IBeaconManager;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -36,7 +38,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
     private ProgressDialog mProgressIndicator;
     private Timer mTimeoutTimer;
 
-    // private Date rangeStartTime; // Just for debug
+     private Date rangeStartTime; // Just for debug
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +88,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
         if (mBeaconManager != null) {
             mBeaconManager.stopRangingTbBTInitialRegions();
             mBeaconManager.unbind(this);
-            mBeaconManager.addRangeNotifier(null);
+            mBeaconManager.removeRangeNotifier(this);
         }
         super.onDestroy();
     }
@@ -123,10 +125,9 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
                         mTimeoutTimer.cancel();
                         mTimeoutTimer = null;
                     }
-                  /*  Date current = new Date(System.currentTimeMillis());
+                    Date current = new Date(System.currentTimeMillis());
                     long elapsed = current.getTime() - rangeStartTime.getTime();
                     Toast.makeText(ContentListActivity.this, "ビーコン領域限定コンテンツをチェックしました Elapsed: " + elapsed / 1000 + " sec.", Toast.LENGTH_LONG).show();
-                    */
                     //　ビーコン検出処理の停止
                     mBeaconManager.stopRangingTbBTInitialRegions();
                 }
@@ -184,7 +185,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
                                     mProgressIndicator = null;
                                 }
                                 // ビーコンの検出を停止
-                               // Toast.makeText(ContentListActivity.this, "タイムアウトしました", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ContentListActivity.this, "タイムアウトしました", Toast.LENGTH_LONG).show();
                                 mBeaconManager.stopRangingTbBTInitialRegions();
                                 mTimeoutTimer.cancel();
                                 mTimeoutTimer = null;
@@ -195,7 +196,7 @@ public class ContentListActivity extends ListActivity implements BeaconConsumer,
             };
             // Repeat every sec.
             mTimeoutTimer.schedule(stopRangingTask, 0, 1000);
-         //   rangeStartTime = new Date(System.currentTimeMillis());
+            rangeStartTime = new Date(System.currentTimeMillis());
 
             // ビーコン検出処理を開始します
             mBeaconManager.startRangingTbBTInitialRegions();
